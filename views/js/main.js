@@ -512,13 +512,13 @@ function updatePositions() {
     var phase = Math.sin(scrollPos + (i % 5));
     if(initialPositioning) {
       items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+      initialPositioning = false;
     }
     else {
       var left = items[i].basicLeft + 100 * phase + 'px';
       items[i].style.transform = 'translate3d(' + left + ',0,0)';
     }
   }
-  initialPositioning = false;
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
@@ -539,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza-min.png";
+    elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;

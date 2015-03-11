@@ -449,6 +449,10 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
+  /** Improvements: Refactored code prevent the calling "determineDx()" and calc "newwidth" for each pizza element
+                    Doing the aove calculations on a single pizza element outside the for loop 
+                    improves computation efficiency.
+  */
   function changePizzaSizes(size) {
     var randomPizzaContainers = document.querySelectorAll(".randomPizzaContainer");
     var oldwidth = randomPizzaContainers[0].offsetWidth;
@@ -500,6 +504,12 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
+/** Improvements: Using Translate 3d to slide the pizzas over style.left, 
+                  thus maintaining constant a freamerate >=60; 
+                  verified via timeline trace in chrome dev-tools.
+                  However, using style.left for initial positioning of backgroung pizzas.
+                  Thereafter only Tranlate 3d is used to slide the pizzas.
+*/
 var initialPositioning = true;
 function updatePositions() {
   frame++;

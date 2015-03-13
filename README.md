@@ -30,3 +30,5 @@ Some useful tips to help you get started:
 
 2. Changes in "updatePositions" function : Using Translate 3d to slide the pizzas over style.left, thus maintaining a constant freamerate >=60. This has been verified via timeline trace in chrome dev-tools. However, style.left is initially used for positioning the backgroung pizzas. Thereafter, only Tranlate 3d is used to slide the pizzas.(Lines 518- 540)
 
+Note: Minified JS, CSS code is used for the pizza.html. The minification is carried out usig Grunt. Besides, optimized images are used in pizza.html.
+

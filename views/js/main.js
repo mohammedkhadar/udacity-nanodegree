@@ -449,9 +449,9 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
-  /** Improvements: Refactored code prevent the calling "determineDx()" and calc "newwidth" for each pizza element
-                    Doing the aove calculations on a single pizza element outside the for loop 
-                    improves computation efficiency.
+  /** Improvements: Refactored code to prevent invoking "determineDx()" and calculating "newwidth" for each pizza element. 
+                    Instead, "determineDx()" and "newwidth" are invoked and calculated a single pizza element outside the "for" loop. 
+                    This improves computation efficiency.
   */
   function changePizzaSizes(size) {
     var randomPizzaContainers = document.querySelectorAll(".randomPizzaContainer");

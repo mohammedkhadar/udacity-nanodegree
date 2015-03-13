@@ -26,7 +26,7 @@ Some useful tips to help you get started:
 
 ### Improvements made to the code in main.js
 
-1. Changes in "changePizzaSizes" function : Refactored code to prevent invoking "determineDx()" and calculating "newwidth" for each pizza element. Instead, "determineDx()" and "newwidth" are invoked and calculated a single pizza element outside the "for" loop. This improves computation efficiency. (Lines 457- 463)
+1. Changes in "changePizzaSizes" function : Refactored code to prevent invoking "determineDx()" and calculating "newwidth" for each pizza element. Instead, "determineDx()" and "newwidth" are invoked and calculated for a single pizza element outside the "for" loop. This improves computation efficiency. (Lines 457- 463)
 
-2. Changes in "updatePositions" function : Using Translate 3d to slide the pizzas over style.left, thus maintaining constant a freamerate >=60. This has been verified via timeline trace in chrome dev-tools. However, style.left is initially used for positioning the backgroung pizzas. Thereafter, only Tranlate 3d is used to slide the pizzas.(Lines 518- 540)
+2. Changes in "updatePositions" function : Using Translate 3d to slide the pizzas over style.left, thus maintaining a constant freamerate >=60. This has been verified via timeline trace in chrome dev-tools. However, style.left is initially used for positioning the backgroung pizzas. Thereafter, only Tranlate 3d is used to slide the pizzas.(Lines 518- 540)
 

@@ -10,6 +10,7 @@ Some useful tips to help you get started:
 
   ```bash
   $> cd /path/to/your-project-folder
+  $> npm install -g grunt-cli
   $> npm install
   ```
 

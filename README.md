@@ -4,8 +4,9 @@
 
 Some useful tips to help you get started:
 
-1. Check out the repository
-2. Run "npm install" from your project directory, this should intall all the packages required by the build tool to run.
+1. Check out the repository.
+2a. Run "npm install -g grunt-cli".
+2b. Run "npm install" from your project directory, this should intall all the packages required by the build tool to run.
 
   ```bash
   $> cd /path/to/your-project-folder

@@ -81,7 +81,7 @@ li.list-items {
 	background-color: rgb(210, 223, 2);
 }
 
-.locations {	
+.locations {
 	overflow: auto;	
 	height: calc(100vh - 100px);
 	box-sizing: border-box;	

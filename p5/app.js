@@ -17,10 +17,9 @@ var Location = function(lat, lng, name, category, address, tel, rating, id) {
 	this.id = id === undefined ? "" : id;
 }
 
-$.ajax( locUrl, {
-	async: false,
+$.ajax( locUrl, {	
 	success: function(data) {
-		console.log(data);
+		//console.log(data);
 		for(var i = 0, items = data.response.groups[0].items; i < items.length; i++) {
 			var venueObj = items[i].venue;
 			model.push( new Location(	venueObj.location.lat, 
@@ -33,7 +32,8 @@ $.ajax( locUrl, {
 										venueObj.id															
 									)
 			);
-		}            
+		}
+		ko.applyBindings(new ViewModel());           
 	},
 	error: function() {
 		alert("Some error occured while fetching the data. Please check your network connectivity and refresh the page.")
@@ -108,5 +108,3 @@ ko.bindingHandlers.location = {
 		location.visible() ? location.googleMapsMarker.setMap(map) : location.googleMapsMarker.setMap(null);
 	}
 };
-
-ko.applyBindings(new ViewModel());

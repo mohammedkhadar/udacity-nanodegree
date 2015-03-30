@@ -29,27 +29,26 @@ var Location = function(lat, lng, name, category, address, tel, rating, id) {
 	this.tel = tel === undefined ? "" : tel;
 	this.rating = rating === undefined ? "" : rating;
 	this.id = id === undefined ? "" : id;
-}
+};
 
 /* Fetching the popular locations data - TOP 20*/
 
-$.ajax( locationData, {
+$.ajax({
+	url: locationData,
 	success: function(data) {
 		//console.log(data);
 		for(var i = 0, items = data.response.groups[0].items; i < items.length; i++) {
 			var venueObj = items[i].venue;
-			model.push( new Location(	venueObj.location.lat, 
-										venueObj.location.lng, 
-										venueObj.name, 
-										venueObj.categories[0].name, 
-										venueObj.location.formattedAddress,
-										venueObj.contact.formattedPhone,
-										venueObj.rating,
-										venueObj.id
-									)
-			);
+			model.push(new Location(venueObj.location.lat, 
+									venueObj.location.lng, 
+									venueObj.name, 
+									venueObj.categories[0].name, 
+									venueObj.location.formattedAddress,
+									venueObj.contact.formattedPhone,
+									venueObj.rating,
+									venueObj.id));
 		}
-		ko.applyBindings(new ViewModel());
+		ko.applyBindings(new ViewModel()); // apply bindings after the data is available
 	},
 	error: function() {
 		alert("Some error occured while fetching the data. Please check your network connectivity and refresh the page.");
@@ -67,12 +66,12 @@ var ViewModel = function() {
 	
 	/* ko observables for filtering the list view */
 	self.filterStr = ko.observable("");
-	self.filterExp = ko.computed( function() { return new RegExp( this.filterStr(),"ig") }, self );
+	self.filterExp = ko.computed( function() { return new RegExp( this.filterStr(),"ig"); }, self );
 	
 	/* ko observables & computed observables to toggle listview */
 	self.showListView = ko.observable(true);
-	self.toggleListView = function(){ self.showListView( ! self.showListView() ) };
-	self.toggleButtonClass = ko.computed( function(){ return this.showListView() ? "glyphicon-remove" : "glyphicon-th-list"}, this);
+	self.toggleListView = function(){ self.showListView( ! self.showListView() ); };
+	self.toggleButtonClass = ko.computed( function(){ return this.showListView() ? "glyphicon-remove" : "glyphicon-th-list";}, this);
 
 	/* function called to filter the list view entries */
 	self.filter = function() {
@@ -85,7 +84,7 @@ var ViewModel = function() {
 			}
 		}
 	};
-}
+};
 
 /** custom binding for location. On creating each of the listview item, goole map markers are created for that location and added to the google maps
 	init() -> Initialize the google map markers, add it to the map and assigns "click" event handlers for list item and mapmarker
@@ -118,8 +117,7 @@ ko.bindingHandlers.location = {
 								location.address.join("<br>") + "<br>" +
 								location.tel + "<br>" +
 								"<a href='" + "https://foursquare.com/v/" + location.id + "'target='_blank'><img class='fs-icon' src='images/foursquare-icon-16x16.png'>" + 
-								"<span>Rating: " + location.rating + "</span></a>"
-			);
+								"<span>Rating: " + location.rating + "</span></a>");
 			infoWindow.open(map, googleMapsMarker);
 		});
 

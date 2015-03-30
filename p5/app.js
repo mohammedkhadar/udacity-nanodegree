@@ -97,13 +97,6 @@ ko.bindingHandlers.location = {
 		var map = allBindings.get('map');
 		var location = allBindings.get('location');
 		var infoWindow = allBindings.get('infoWindow');
-		infoWindow.setContent("<b>" + location.name + "</b><br>" + 
-								location.category + "<br>" +
-								location.address.join("<br>") + "<br>" +
-								location.tel + "<br>" +
-								"<a href='" + "https://foursquare.com/v/" + location.id + "'target='_blank'><img class='fs-icon' src='images/foursquare-icon-16x16.png'>" + 
-								"<span>Rating: " + location.rating + "</span></a>"
-		);
 
 		/* Initialize google maps marker */
 		var googleMapsMarker = location.googleMapsMarker = new google.maps.Marker({
@@ -119,6 +112,13 @@ ko.bindingHandlers.location = {
 				googleMapsMarker.setAnimation(null);
 				clearTimeout(timeout);
 			}, 2000);
+			infoWindow.setContent("<b>" + location.name + "</b><br>" + 
+								location.category + "<br>" +
+								location.address.join("<br>") + "<br>" +
+								location.tel + "<br>" +
+								"<a href='" + "https://foursquare.com/v/" + location.id + "'target='_blank'><img class='fs-icon' src='images/foursquare-icon-16x16.png'>" + 
+								"<span>Rating: " + location.rating + "</span></a>"
+			);
 			infoWindow.open(map, googleMapsMarker);
 		});
 

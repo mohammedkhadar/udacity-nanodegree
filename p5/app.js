@@ -10,6 +10,7 @@
 	View -> The HTML has declarative bindings which use the ViewModel properties as their data source.
 
 */
+
 var LatLng = "51.5072,0.1275"; // London // 12.966,77.566 (Bangalore)
 var locationData = "https://api.foursquare.com/v2/venues/explore?ll=" + LatLng + "&limit=20&section=topPicks&day=any&time=any&locale=en&oauth_token=A5NTPJR3WYZ4I3N3KRB4411S0K4L5GBT2Y25K3QKHGWY3VP5&v=20150329";
 

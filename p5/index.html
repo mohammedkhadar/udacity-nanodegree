@@ -8,15 +8,14 @@
     <title>Neighbourhood Map</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="index.css">
-    <script src="jquery-1.11.2.min.js"></script>    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5_Adjm_D93v-VgKU0p7FtTeoCFFDIBlc"></script>    
+    <script src="jquery-1.11.2.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5_Adjm_D93v-VgKU0p7FtTeoCFFDIBlc"></script>
   </head>
 
   <body>
 		<div id="map-canvas"></div>
-
-    <div class="list-view container-fluid" data-bind="css:{slidein: ! showListView()}">      
-      <h4 class="list-header">Popular Locations</h4>      
+    <div class="list-view container-fluid" data-bind="css:{slidein: ! showListView()}">
+      <h4 class="list-header">Popular Locations</h4>
       <div class="hook glyphicon" data-bind="css: toggleButtonClass, click: toggleListView"></div>
       <div class="filter">
         <div class="srch-in"><input type="text" data-bind="value: filterStr" placeholder="Search by location name"></input></div>
@@ -33,7 +32,7 @@
           </li>
         </ul>
       </div>
-    </div>    
+    </div>
     <script src="knockout.js"></script>
     <script src="app.js"></script>
   </body>

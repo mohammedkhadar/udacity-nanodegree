@@ -7,10 +7,10 @@ html, body, #map-canvas {
 
 .list-view {
 	position: absolute;
-	top: 0;	
-	right: 5;	
-	height: 100vh;		
-	background-color: white;		
+	top: 0;
+	right: 5;
+	height: 100vh;
+	background-color: white;
 	width: 300px;
 	padding-bottom: 15px;
 }
@@ -25,12 +25,12 @@ html, body, #map-canvas {
 	cursor: pointer;
 }
 
-.hook:hover {	
-	background-color: rgb(184, 136, 46);;	
+.hook:hover {
+	background-color: rgb(184, 136, 46);
 }
 
 .filter {
-	position: relative;	
+	position: relative;
 	width: 100%;
 	height: 30px;
 	margin: 15px 0;
@@ -49,7 +49,7 @@ ul.list {
 }
 
 li.list-items {
-	padding: 15px 0;	
+	padding: 15px 0;
 	border-bottom: 1px solid gray;
 }
 
@@ -68,12 +68,12 @@ li.list-items {
   	width: 208px;
  }
 .srch-btn {
-	position: relative;	
+	position: relative;
 	display: inline-block;
 	height: 100%;
 	padding: 8px 24px;
   	box-sizing: border-box;
-  	cursor: pointer;  	
+  	cursor: pointer;
 	background-color: rgb(210, 223, 213);
 }
 
@@ -82,9 +82,9 @@ li.list-items {
 }
 
 .locations {
-	overflow: auto;	
+	overflow: auto;
 	height: calc(100vh - 100px);
-	box-sizing: border-box;	
+	box-sizing: border-box;
 }
 
 .slidein {

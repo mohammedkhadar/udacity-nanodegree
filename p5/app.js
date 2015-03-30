@@ -17,6 +17,8 @@ var Location = function(lat, lng, name, category, address, tel, rating, id) {
 	this.id = id === undefined ? "" : id;
 }
 
+/* Fetching the popular locations data */
+
 $.ajax( locUrl, {	
 	success: function(data) {
 		//console.log(data);
@@ -44,19 +46,25 @@ $.ajax( locUrl, {
 
 var ViewModel = function() {
 	var self = this;
+	/* google map related bindings */
 	self.locations = ko.observableArray(model);	    
 	self.map = new google.maps.Map(document.getElementById('map-canvas'), { center: self.locations()[0], zoom: 12, disableDefaultUI: true });
 	self.infoWindow = new google.maps.InfoWindow({content: ""});
+	
+	/* ko observables for filtering the list view */
 	self.filterStr = ko.observable("");
 	self.filterExp = ko.computed( function() { return new RegExp( this.filterStr(),"ig") }, self );
+	
+	/* ko observables to toggle listview */
 	self.showListView = ko.observable(true);
 	self.toggleListView = function(){ self.showListView( ! self.showListView() ) };
 	self.toggleButtonClass = ko.computed( function(){ return this.showListView() ? "glyphicon-remove" : "glyphicon-th-list"}, this);
 
+	/* function called to filter the list view entries */
 	self.filter = function() {
 		for(var i = 0, l = self.locations().length; i < l; i++){
 			if(self.locations()[i].name.match(self.filterExp()) === null) {
-				self.locations()[i].visible(false);		
+				self.locations()[i].visible(false);				
 			}
 			else {
 				self.locations()[i].visible(true);				
@@ -65,6 +73,10 @@ var ViewModel = function() {
 	};
 }
 
+/** custom declarative binding for location. There is a binding hadler for each of the locations 
+	init() -> Initialize the google map markers and assigns "click" event handlers
+	update() -> Called when the declarative bindings are updated; especially when "visible" observable is updated due to filtering operation
+*/
 ko.bindingHandlers.location = {
 
 	init: function(element, valueAccessor, allBindings){		

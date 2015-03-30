@@ -1,0 +1,93 @@
+html, body, #map-canvas { 
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+.list-view {
+	position: absolute;
+	top: 0;	
+	right: 5;	
+	height: 100vh;		
+	background-color: white;		
+	width: 300px;
+	padding-bottom: 15px;
+}
+
+.hook {
+	position: absolute;
+	width: 28px;
+	top: 0;
+	right: -28px;
+	background-color: wheat;
+	padding: 8px;
+	cursor: pointer;
+}
+
+.hook:hover {	
+	background-color: rgb(184, 136, 46);;	
+}
+
+.filter {
+	position: relative;	
+	width: 100%;
+	height: 30px;
+	margin: 15px 0;
+	background-color: white;
+	overflow: hidden;
+}
+
+h4.list-header {
+	overflow: hidden;
+}
+
+ul.list {
+	list-style: none;
+	margin: 0 0;
+	padding: 0 0;
+}
+
+li.list-items {
+	padding: 15px 0;	
+	border-bottom: 1px solid gray;
+}
+
+.srch-in {
+	position: relative;
+	display: inline-block;
+	float: left;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+.srch-in input {
+	height: 100%;
+	box-sizing: border-box;
+  	padding: 0 5px;
+  	width: 208px;
+ }
+.srch-btn {
+	position: relative;	
+	display: inline-block;
+	height: 100%;
+	padding: 8px 24px;
+  	box-sizing: border-box;
+  	cursor: pointer;  	
+	background-color: rgb(210, 223, 213);
+}
+
+.srch-btn:hover {
+	background-color: rgb(210, 223, 2);
+}
+
+.locations {	
+	overflow: auto;	
+	height: calc(100vh - 100px);
+	box-sizing: border-box;	
+}
+
+.slidein {
+	width: 0 !important;
+	padding: 0 !important;
+}

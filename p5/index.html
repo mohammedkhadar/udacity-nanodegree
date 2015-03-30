@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html>
+  
   <head>
-    <style type="text/css">
-      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
-    </style>
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5_Adjm_D93v-VgKU0p7FtTeoCFFDIBlc">
-    </script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: { lat: -34.397, lng: 150.644},
-          zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Neighbourhood Map</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="jquery-1.11.2.min.js"></script>    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5_Adjm_D93v-VgKU0p7FtTeoCFFDIBlc"></script>    
   </head>
+
   <body>
 		<div id="map-canvas"></div>
+
+    <div class="list-view container-fluid" data-bind="css:{slidein: ! showListView()}">      
+      <h4 class="list-header">Popular Locations</h4>      
+      <div class="hook glyphicon" data-bind="css: toggleButtonClass, click: toggleListView"></div>
+      <div class="filter">
+        <div class="srch-in"><input type="text" data-bind="value: filterStr" placeholder="Search by location name"></input></div>
+        <div class="srch-btn" data-bind="click: filter"><span class="glyphicon glyphicon-search"></span></div>
+      </div>
+      <div class="locations">
+        <ul data-bind="foreach: locations" class="list">
+          <li data-bind="visible: visible(), location: $data, map: $parent.map, infoWindow: $parent.infoWindow" class="list-items">
+            <a href="#">
+              <b><span data-bind="text: name"></span></b><br>
+              <i><span data-bind="text: category"></span></i><br>
+              <span data-bind="text: address"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>    
+    <script src="knockout.js"></script>
+    <script src="app.js"></script>
   </body>
+
 </html>

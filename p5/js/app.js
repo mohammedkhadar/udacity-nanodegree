@@ -126,21 +126,25 @@ ko.bindingHandlers.location = {
 		});
 
 		/* Adding "click" event listeners to Google maps marker and list view item */
-		google.maps.event.addListener(googleMapsMarker, 'click', function(){
+		google.maps.event.addListener(googleMapsMarker, 'click', clickHandler);
+		element.addEventListener("click", function(e){ google.maps.event.trigger(googleMapsMarker, 'click'); });
+
+		function clickHandler() {
+			var infoWindowContent = "<b>" + location.name + "</b><br>" + 
+									location.category + "<br>" +
+									location.address.join("<br>") + "<br>" +
+									location.tel + "<br>" +
+									"<a href='" + "https://foursquare.com/v/" + location.id + "'target='_blank'>" +
+										"<img class='fs-icon' src='images/foursquare-icon-16x16.png'>" + 
+										"<span>Rating: " + location.rating + "</span>" +
+									"</a>";
 			googleMapsMarker.setAnimation(google.maps.Animation.BOUNCE);
 			map.setCenter(location);
 			var timeout = setTimeout(function() { 
 				googleMapsMarker.setAnimation(null);
 				clearTimeout(timeout);
 			}, 2000);
-			infoWindow.setContent("<b>" + location.name + "</b><br>" + 
-								location.category + "<br>" +
-								location.address.join("<br>") + "<br>" +
-								location.tel + "<br>" +
-								"<a href='" + "https://foursquare.com/v/" + location.id + "'target='_blank'>" +
-									"<img class='fs-icon' src='images/foursquare-icon-16x16.png'>" + 
-									"<span>Rating: " + location.rating + "</span>" +
-								"</a>");
+			infoWindow.setContent(infoWindowContent);
 			infoWindow.open(map, googleMapsMarker);
 			bindingContext.$parent.currentLocation(location); //element.scrollIntoView();
 
@@ -151,11 +155,7 @@ ko.bindingHandlers.location = {
 			} else {
 				if(bindingContext.$parent.showListView()) map.panBy(-250, 0) ;
 			}
-		});
-
-		element.addEventListener("click", function(e){
-			google.maps.event.trigger(googleMapsMarker, 'click');
-		});
+		}
 	},
 
 	/* Hide or show google maps marker based on the visible binding in the UI */

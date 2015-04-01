@@ -11,15 +11,16 @@ html, body, #map-canvas {
 	right: 5;
 	height: 100vh;
 	background-color: white;
-	width: 300px;
+	max-width: 500px;
 	padding-bottom: 15px;
+	transition : top 1s ease-in-out;
 }
 
 .hook {
 	position: absolute;
 	width: 28px;
 	top: 0;
-	right: -28px;
+	right: 0px;
 	background-color: wheat;
 	padding: 8px;
 	cursor: pointer;
@@ -59,21 +60,22 @@ li.list-items {
 	float: left;
 	height: 100%;
 	box-sizing: border-box;
+	width: 80%;
 }
 
 .srch-in input {
 	height: 100%;
 	box-sizing: border-box;
-  	padding: 0 5px;
-  	width: 208px;
- }
+	padding: 0 5px;
+	width: 100%;
+}
 .srch-btn {
 	position: relative;
 	display: inline-block;
 	height: 100%;
 	padding: 8px 24px;
-  	box-sizing: border-box;
-  	cursor: pointer;
+	box-sizing: border-box;
+	cursor: pointer;
 	background-color: rgb(210, 223, 213);
 }
 
@@ -83,11 +85,19 @@ li.list-items {
 
 .locations {
 	overflow: auto;
-	height: calc(100vh - 100px);
+	height: calc(100vh - 120px);
 	box-sizing: border-box;
 }
 
 .slidein {
 	width: 0 !important;
 	padding: 0 !important;
+}
+
+.slidein .glyphicon-th-list {
+	left: 0;
+}
+
+.selected {
+	background-color: rgb(210, 223, 213);
 }

@@ -1,4 +1,4 @@
-# mohammed88.github.io
+# mohammedkhadar.github.io
 
 Sample projects: Nano-Degree
 ----------------------------
